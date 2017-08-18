@@ -31,4 +31,8 @@ print(np.arange(12).reshape((3,4)))
 print(np.linspace(1,10,6).reshape(2,3))
 
 
+#ndarray
+dataset = np.ndarray(shape=(3,3,3),dtype=np.float32)
+print("dataset's size",dataset.shape)
+
 

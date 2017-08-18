@@ -6,6 +6,7 @@ b = np.array([2,2,2])
 # vstack need a tuble parameter
 #v means vertical stack
 c = np.vstack((A,b))
+print(c)
 #[1,1,1,2,2,2] 序列和序列合并，还是序列
 d = np.hstack((A,b))
 print(d)

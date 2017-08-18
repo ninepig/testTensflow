@@ -13,19 +13,22 @@ def add_layer(inputs,in_size,out_size,activation_function = None):
         outputs = activation_function(Wx_plus_b)
     return outputs
 
-
+# 生成 -1---1 范围的 300个数值， 然后[ : ,np.newaxis] 意思就是把 原先[0.5,0.4,0.6]这样形式的变成[[0.5]
+# [0.4]
+# -.3]]这样的形式 作为输入
 x_data= np.linspace(-1,1,300)[:,np.newaxis]
 noise = np.random.normal(0,0.05,x_data.shape)
 y_data = np.square(x_data)-0.5+noise
 
 
 # define placeholder for inputs to network
-# numpy shape means  改变成什么样的数组
+#  none 表示默认值还不确定
 xs = tf.placeholder(tf.float32, [None, 1])
 ys = tf.placeholder(tf.float32, [None, 1])
 
-
+# relu可以减少梯度爆炸的问题
 l1 =add_layer(xs,1,10,activation_function=tf.nn.relu)
+# 输出层不适用activationfunction
 prediction = add_layer(l1,10,1,activation_function=None)
 
 # tf里面的求loss fucntion的 reduce_mean/ sum 表示求和 求平均
